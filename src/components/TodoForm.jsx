@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from 'react'
 
 const TodoForm = ({ addTodo }) => {
+
     const [title, setTitle] = useState('')
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        addTodo()
+        addTodo(title)
+        setTitle('')
     }
 
     const handleChangeTitle = (event) => {
@@ -16,11 +18,11 @@ const TodoForm = ({ addTodo }) => {
 
     return (
         <div style={styles.container}>
-            <form>
+            <form
                 onSubmit={(event) => {
                     handleSubmit(event)
                 }}
-
+            >
                 <input
                     type="text"
                     placeholder="Add your Todo"
@@ -28,8 +30,8 @@ const TodoForm = ({ addTodo }) => {
                     onChange={(event) => {
                         handleChangeTitle(event)
                     }}
+                    value={title}
                 />
-
                 <button style={styles.button}>Add Todo</button>
             </form>
         </div>
@@ -38,18 +40,18 @@ const TodoForm = ({ addTodo }) => {
 
 const styles = {
     container: {
-        marginBottom: '32px'
+        marginBottom: '32px',
     },
     formInput: {
         height: '66px',
         width: '40%',
         fontSize: '16px',
-        padding: '0 16px'
+        padding: '0 16px',
     },
     button: {
         height: '72px',
-        fontSize: '16px'
-    }
+        fontSize: '16px',
+    },
 }
 
 export default TodoForm
