@@ -1,6 +1,9 @@
-import React from "react"
+import React, { useContext } from 'react'
+import { TodoContext } from '../App'
 
-const TodoItem = ({ todo, toggleCompleted, removeTodo }) => {
+const TodoItem = ({ todo }) => {
+    const { toggleCompleted, removeTodo } = useContext(TodoContext)
+
     const getTodoTitleStyle = () => {
         if (todo.completed === true) {
             return { textDecoration: 'line-through' }
