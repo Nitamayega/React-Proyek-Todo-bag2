@@ -4,19 +4,17 @@ import { TodoContext } from '../App'
 const TodoItem = ({ todo }) => {
     const { toggleCompleted, removeTodo } = useContext(TodoContext)
 
-    const getTodoTitleStyle = () => {
-        if (todo.completed === true) {
-            return { textDecoration: 'line-through' }
-        } else {
-            return { textDecoration: 'none' }
-        }
-    }
+    const getTodoTitleStyle = () => ({
+        textDecoration: todo.completed ? 'line-through' : 'none',
+        color: todo.completed ? '#888' : '#000',
+    });
 
     return (
         <div style={styles.todoItem}>
             <input
                 type='checkbox'
                 style={styles.checkbox}
+                checked={todo.completed}
                 onChange={() => toggleCompleted(todo.id)}
             />
             <p style={getTodoTitleStyle()}>{todo.title}</p>
@@ -36,6 +34,9 @@ const styles = {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '0 20px',
+        marginBottom: '8px',
+        borderRadius: '4px',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
     },
     checkbox: {
         height: '18px',
@@ -50,6 +51,10 @@ const styles = {
         border: 'none',
         cursor: 'pointer',
         fontSize: '16px',
+        transition: 'background-color 0.3s',
+    },
+    buttonHover: {
+        backgroundColor: '#FF0000',
     },
 }
 

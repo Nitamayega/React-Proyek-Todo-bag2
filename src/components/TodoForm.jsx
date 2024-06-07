@@ -43,14 +43,23 @@ const styles = {
         marginBottom: '32px',
     },
     formInput: {
-        height: '66px',
+        height: '40px',
         width: '40%',
         fontSize: '16px',
         padding: '0 16px',
+        borderRadius: '4px',
+        border: '1px solid #ddd',
+        marginRight: '8px',
     },
     button: {
-        height: '72px',
+        height: '40px',
         fontSize: '16px',
+        padding: '0 16px',
+        borderRadius: '4px',
+        border: 'none',
+        backgroundColor: '#007BFF',
+        color: '#fff',
+        cursor: 'pointer',
     },
 }
 

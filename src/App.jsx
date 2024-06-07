@@ -27,20 +27,21 @@ function App() {
   ])
 
   const toggleCompleted = (todoId) => {
-    const updateTodos = todos.map((todo) => {
-      if (todo.id === todoId) {
-        todo.completed = !todo.completed
-      }
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === todoId) {
+          todo.completed = !todo.completed
+        }
 
-      return todo
-    })
-
-    setTodos(updateTodos)
+        return todo
+      })
+    )
   }
 
   const removeTodo = (todoId) => {
-    const updateTodos = todos.filter((todo) => todo.id !== todoId)
-    setTodos(updateTodos)
+    setTodos(
+      todos.filter((todo) => todo.id !== todoId)
+    )
   }
 
   const addTodo = (todoTitle) => {
@@ -48,14 +49,13 @@ function App() {
       return
     }
 
-    const newTodo = {
-      id: todos.length + 1,
-      title: todoTitle,
-      completed: false,
-    }
-
-    const updatedTodos = todos.concat(newTodo)
-    setTodos(updatedTodos)
+    setTodos(
+      todos.concat({
+        id: todos.length + 1,
+        title: todoTitle,
+        completed: false,
+      })
+    )
   }
 
   console.log(todos)
@@ -74,10 +74,12 @@ function App() {
 const styles = {
   container: {
     textAlign: 'center',
-    padding: '12px'
+    padding: '12px',
   },
   title: {
     fontSize: '36px',
+    color: '#333',
+    textShadow: '1px 1px 2px #ccc',
   },
 }
 
